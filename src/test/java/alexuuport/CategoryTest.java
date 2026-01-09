@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,14 +43,17 @@ class CategoryTest {
 
     @Test
     void printCategoryShouldPrintCorrectOutput() {
-        Category category = new Category("Развлечения", 5000.0);
+        Category category = new Category("Еда", 1000);
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out, true, StandardCharsets.UTF_8));
 
         category.printCategory();
 
-        String output = outContent.toString();
+        String output = out.toString(StandardCharsets.UTF_8);
 
-        assertTrue(output.contains("Имя категории: Развлечения"));
-        assertTrue(output.contains("Месячный бюджет: 5000.0"));
+        assertTrue(output.contains("Имя категории: Еда"));
+        assertTrue(output.contains("Месячный бюджет: 1000"));
     }
 
     // ===== equals / hashCode tests =====

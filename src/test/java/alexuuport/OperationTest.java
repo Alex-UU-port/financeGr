@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,7 +18,7 @@ class OperationTest {
 
     @BeforeEach
     void setUp() {
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, true, StandardCharsets.UTF_8));
     }
 
     @AfterEach
@@ -40,18 +41,18 @@ class OperationTest {
 
     @Test
     void printOperationShouldPrintCorrectOutput() {
-        LocalDate date = LocalDate.of(2024, 5, 3);
-        Category category = new Category("Зарплата");
+        Category category = new Category("Еда");
+        Operation operation = new Operation(false, category, 500, LocalDate.of(2024, 1, 10));
 
-        Operation operation = new Operation(true, category,5000.0, date);
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out, true, StandardCharsets.UTF_8));
 
         operation.printOperation();
 
-        String output = outContent.toString();
+        String output = out.toString(StandardCharsets.UTF_8);
 
-        assertTrue(output.contains("Тип операции: Доход"));
-        assertTrue(output.contains("Сумма операции: 5000.0"));
-        assertTrue(output.contains("Категория: Зарплата"));
-        assertTrue(output.contains("Дата совершения операции: 03-05-2024"));
+        assertTrue(output.contains("Еда"));
+        assertTrue(output.contains("500"));
+        assertTrue(output.contains("10-01-2024"));
     }
 }

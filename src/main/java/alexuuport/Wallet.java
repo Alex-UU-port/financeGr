@@ -23,26 +23,7 @@ public class Wallet {
         categories.add(food);
         categories.add(medicine);
 
-        //так же добавляем некоторые операции
-        /*
-        LocalDate date = LocalDate.of(2025, 11, 1);
-        Operation opSalary = new Operation (true, salary, 50000, date);
-        Operation opBonus = new Operation (true, bonus, 5000, date);
-        date = LocalDate.of(2025, 11,2);
-        Operation opFood = new Operation (false, food, 3000, date);
-        Operation opMedicine = new Operation (false, salary, 45000, date);
-
-        operations.add(opSalary);
-        operations.add(opBonus);
-        operations.add(opFood);
-        operations.add(opMedicine);
-         */
-
     }
-
-    //public double getBalance() {
-    //    return balance;
-    //}
 
     public List<Category> getCategories() {
         return categories;

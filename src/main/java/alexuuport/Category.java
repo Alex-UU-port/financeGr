@@ -1,9 +1,10 @@
 package alexuuport;
 
+import java.util.Objects;
+
 public class Category {
     private String name;
     private double budget;
-    //private double spent;
 
     public Category(String name) {
         this.name = name;
@@ -24,9 +25,6 @@ public class Category {
         return budget;
     }
 
-    //public double getSpent() {
-    //    return spent;
-    //}
 
     public void printCategory() {
         System.out.println("Имя категории: " + name + "\t\tМесячный бюджет: " + budget);
@@ -34,12 +32,37 @@ public class Category {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Category other = (Category) obj;
-        if (name.equals(other.getName())) {
+        // 1. Если сравниваем объект сам с собой — они равны
+        if (this == obj) {
             return true;
-        } else return false;
+        }
+
+        // 2. Если передан null — объекты не равны
+        if (obj == null) {
+            return false;
+        }
+
+        // 3. Если классы разные — объекты не равны
+        // Используем getClass(), а не instanceof,
+        // чтобы избежать равенства с наследниками
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        // 4. Безопасно приводим объект к Category
+        Category other = (Category) obj;
+
+        // 5. Сравниваем значимые поля
+        // В нашем случае — только name
+        return Objects.equals(this.name, other.name);
+    }
+
+    @Override
+    public int hashCode() {
+        // hashCode ОБЯЗАН использовать те же поля,
+        // что и equals()
+        // Иначе коллекции (HashMap, HashSet) будут работать неправильно
+        return Objects.hash(name);
     }
 
 }

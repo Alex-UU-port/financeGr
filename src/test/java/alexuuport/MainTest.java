@@ -43,20 +43,20 @@ class MainTest {
     // ---------- toCountBalance ----------
 
     @Test
-    void toCountBalance_shouldCalculateCorrectBalance() {
+    void toCountBalanceShouldCalculateCorrectBalance() {
         double balance = Main.toCountBalance(user.getWallet().getOperation());
         assertEquals(11000, balance);
     }
 
     @Test
-    void toCountBalance_emptyList_shouldReturnZero() {
+    void toCountBalanceEmptyListShouldReturnZero() {
         assertEquals(0, Main.toCountBalance(List.of()));
     }
 
     // ---------- toFilter(year, month) ----------
 
     @Test
-    void toFilter_shouldReturnOperationsByYearAndMonth() {
+    void toFilterShouldReturnOperationsByYearAndMonth() {
         List<Operation> result = Main.toFilter(user, 2025, 1);
 
         assertEquals(3, result.size());
@@ -67,7 +67,7 @@ class MainTest {
     }
 
     @Test
-    void toFilter_noOperationsForMonth_shouldReturnEmptyList() {
+    void toFilterNoOperationsForMonthShouldReturnEmptyList() {
         List<Operation> result = Main.toFilter(user, 2024, 12);
         assertTrue(result.isEmpty());
     }
@@ -75,7 +75,7 @@ class MainTest {
     // ---------- toFilter(year, month, category) ----------
 
     @Test
-    void toFilter_withCategory_shouldReturnOnlyThatCategory() {
+    void toFilterWithCategoryShouldReturnOnlyThatCategory() {
         List<Operation> result =
                 Main.toFilter(user, 2025, 1, "Еда");
 
@@ -86,7 +86,7 @@ class MainTest {
     }
 
     @Test
-    void toFilter_withCategory_incomeShouldBeExcluded() {
+    void toFilterWithCategoryIncomeShouldBeExcluded() {
         List<Operation> result =
                 Main.toFilter(user, 2025, 1, "Зарплата");
 
@@ -95,7 +95,7 @@ class MainTest {
     }
 
     @Test
-    void toFilter_unknownCategory_shouldReturnEmptyList() {
+    void toFilterUnknownCategoryShouldReturnEmptyList() {
         List<Operation> result =
                 Main.toFilter(user, 2025, 1, "Транспорт");
 

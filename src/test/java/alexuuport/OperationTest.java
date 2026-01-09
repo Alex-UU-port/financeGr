@@ -26,7 +26,7 @@ class OperationTest {
     }
 
     @Test
-    void constructorAndGetters_shouldReturnCorrectValues() {
+    void constructorAndGettersShouldReturnCorrectValues() {
         LocalDate date = LocalDate.of(2024, 1, 10);
         Category category = new Category("Еда", 1000);
 
@@ -39,7 +39,7 @@ class OperationTest {
     }
 
     @Test
-    void printOperation_shouldPrintCorrectOutput() {
+    void printOperationShouldPrintCorrectOutput() {
         LocalDate date = LocalDate.of(2024, 5, 3);
         Category category = new Category("Зарплата");
 

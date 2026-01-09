@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class WalletTest {
 
     @Test
-    void constructor_shouldCreateDefaultCategories() {
+    void constructorShouldCreateDefaultCategories() {
         Wallet wallet = new Wallet();
 
         List<Category> categories = wallet.getCategories();
@@ -25,7 +25,7 @@ class WalletTest {
     }
 
     @Test
-    void getOperation_shouldReturnEmptyListInitially() {
+    void getOperationShouldReturnEmptyListInitially() {
         Wallet wallet = new Wallet();
 
         List<Operation> operations = wallet.getOperation();
@@ -35,14 +35,14 @@ class WalletTest {
     }
 
     @Test
-    void countBalance_shouldReturnZeroWhenNoOperations() {
+    void countBalanceShouldReturnZeroWhenNoOperations() {
         Wallet wallet = new Wallet();
 
         assertEquals(0.0, wallet.countBalance());
     }
 
     @Test
-    void countBalance_shouldIncreaseForIncomeOperation() {
+    void countBalanceShouldIncreaseForIncomeOperation() {
         Wallet wallet = new Wallet();
         Category salary = new Category("Зарплата");
 
@@ -54,7 +54,7 @@ class WalletTest {
     }
 
     @Test
-    void countBalance_shouldDecreaseForExpenseOperation() {
+    void countBalanceShouldDecreaseForExpenseOperation() {
         Wallet wallet = new Wallet();
         Category food = new Category("Еда");
 
@@ -66,7 +66,7 @@ class WalletTest {
     }
 
     @Test
-    void countBalance_shouldHandleMultipleOperationsCorrectly() {
+    void countBalanceShouldHandleMultipleOperationsCorrectly() {
         Wallet wallet = new Wallet();
 
         wallet.getOperation().add(

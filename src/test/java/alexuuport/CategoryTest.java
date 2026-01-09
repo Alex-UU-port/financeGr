@@ -25,7 +25,7 @@ class CategoryTest {
     }
 
     @Test
-    void constructorWithName_shouldSetNameAndZeroBudget() {
+    void constructorWithNameShouldSetNameAndZeroBudget() {
         Category category = new Category("Еда");
 
         assertEquals("Еда", category.getName());
@@ -33,7 +33,7 @@ class CategoryTest {
     }
 
     @Test
-    void constructorWithNameAndBudget_shouldSetAllFields() {
+    void constructorWithNameAndBudgetShouldSetAllFields() {
         Category category = new Category("Транспорт", 3000.0);
 
         assertEquals("Транспорт", category.getName());
@@ -41,7 +41,7 @@ class CategoryTest {
     }
 
     @Test
-    void printCategory_shouldPrintCorrectOutput() {
+    void printCategoryShouldPrintCorrectOutput() {
         Category category = new Category("Развлечения", 5000.0);
 
         category.printCategory();
@@ -55,14 +55,14 @@ class CategoryTest {
     // ===== equals / hashCode tests =====
 
     @Test
-    void equals_shouldBeTrueForSameObject() {
+    void equalsShouldBeTrueForSameObject() {
         Category category = new Category("Еда", 1000.0);
 
         assertEquals(category, category);
     }
 
     @Test
-    void equals_shouldReturnTrueForSameName() {
+    void equalsShouldReturnTrueForSameName() {
         Category c1 = new Category("Еда", 1000.0);
         Category c2 = new Category("Еда", 5000.0);
 
@@ -70,7 +70,7 @@ class CategoryTest {
     }
 
     @Test
-    void equals_shouldReturnFalseForDifferentName() {
+    void equalsShouldReturnFalseForDifferentName() {
         Category c1 = new Category("Еда");
         Category c2 = new Category("Транспорт");
 
@@ -78,7 +78,7 @@ class CategoryTest {
     }
 
     @Test
-    void equals_shouldReturnFalseForNullAndDifferentClass() {
+    void equalsShouldReturnFalseForNullAndDifferentClass() {
         Category category = new Category("Еда");
 
         assertNotEquals(category, null);
@@ -86,7 +86,7 @@ class CategoryTest {
     }
 
     @Test
-    void hashCode_shouldBeEqualForEqualObjects() {
+    void hashCodeShouldBeEqualForEqualObjects() {
         Category c1 = new Category("Еда", 1000.0);
         Category c2 = new Category("Еда", 5000.0);
 
